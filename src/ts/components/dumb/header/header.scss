@@ -1,0 +1,95 @@
+/* header.scss */
+@import '~/styles/variables.scss';
+@import '~/styles/mixins.scss';
+@import '~/styles/fonts.scss';
+
+header {
+  @include zeroTopLeftRight;
+  width: 100%;
+
+  #menu {
+    @include zeroTopLeftRight;
+    height: 80px;
+    background: $white;
+    box-shadow: 0px 4px 30px rgba($black, 0.05), 0px 0px 1px rgba($black, 0.15);
+    display: flex;
+
+    #logo {
+      position: absolute;
+      width: 243px;
+      height: 80px;
+      left: 0px;
+      top: 0px;
+      background: $primaryColor;
+      color: $white;
+      font-family: 'Poppins', sans-serif;
+      font-size: 25px;
+      line-height: 37px;
+      text-transform: uppercase;
+      font-style: italic;
+      text-align: center;
+      letter-spacing: 0.6px;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+
+      &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0px;
+        right: 0px;
+        width: 20px;
+        height: 100%;
+        background-color: $primaryColor;
+        border-right: 5px solid $secondaryColor;
+        transform-origin: 100% 100%;
+        transform: skewX(-12deg);
+      }
+
+      span {
+        font-weight: 900;
+      }
+    }
+  }
+
+  #site-hero {
+    width: 100%;
+    @include zeroTopLeftRight;
+    height: 420px;
+    background: linear-gradient(180deg, rgba($black, 0) 0%, rgba($black, 0.5) 100%),
+      url('../../../../img/cinema-king-header-optimized.jpg') no-repeat center;
+    background-size: cover;
+    display: flex;
+
+    h1 {
+      color: $white;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 58px;
+      line-height: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex: auto;
+
+      &:after {
+        content: 'FEATURE';
+        color: $fontTitleColor;
+        background: $secondaryColor;
+        height: 28.3px;
+        width: 104px;
+        text-align: center;
+        font-family: 'Poppins', sans-serif;
+        font-style: italic;
+        font-weight: 900;
+        font-size: 14px;
+        line-height: 28px;
+        border-right: 5px solid $secondaryColor;
+        border-left: 5px solid $secondaryColor;
+        transform-origin: 100% 100%;
+        transform: skewX(-12deg);
+      }
+    }
+  }
+}

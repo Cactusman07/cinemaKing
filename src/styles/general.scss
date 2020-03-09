@@ -1,0 +1,11 @@
+/* general.scss */
+@import './variables.scss';
+@import './fonts.scss';
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: $tertiaryColor;
+  font-family: 'Caladea', sans-serif;
+}

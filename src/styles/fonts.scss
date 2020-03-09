@@ -1,9 +1,15 @@
 /* fonts.scss */
 
 @font-face {
+  font-family: 'Poppins';
+  src: url('/fonts/Poppins/Poppins-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
   font-family: 'Caladea';
-  src: url('./fonts/Caladea/Caladea-Regular.ttf') format('truetype') font-weight-normal,
-    url('./fonts/Caladea/Caladea-Bold.ttf') format('truetype') font-weight-bold,
-    url('./fonts/Caladea/Caladea-Italic.ttf') format('truetype') font-italic,
-    url('./fonts/Caladea/Caladea-BoldItalic.ttf') format('truetype') font-italic font-weight-bold;
+  src: url('/fonts/Caladea/Caladea-Regular.tff') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }

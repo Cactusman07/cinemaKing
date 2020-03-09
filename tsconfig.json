@@ -57,7 +57,9 @@
       "@actions/*": ["ts/actions/*"],
       "@components/*": ["ts/components/*"],
       "@reducers/*": ["ts/reducers/*"],
-      "@store/*": ["ts/store/*"]
+      "@store/*": ["ts/store/*"],
+      "@styles/*": ["src/styles"],
+      "@fonts/*": ["src/fonts"]
     },
     // "rootDirs": [],                        /* List of root folders whose combined content represents the structure of the project at runtime. */
     "typeRoots": [

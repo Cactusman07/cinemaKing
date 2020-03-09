@@ -29,7 +29,9 @@ module.exports = (env, argv) => {
         actions: path.resolve(__dirname, "ts/actions"),
         components: path.resolve(__dirname, "ts/components"),
         reducers: path.resolve(__dirname, "ts/reducers"),
-        store: path.resolve(__dirname, "ts/store")
+        store: path.resolve(__dirname, "ts/store"),
+        styles: path.resolve(__dirname, "src/styles"),
+        fonts: path.resolve(__dirname, "src/fonts")
       },
       // All resolvable extensions.
        extensions: [".ts", ".tsx", ".js", ".jsx", ".css", ".scss"]
@@ -100,6 +102,7 @@ module.exports = (env, argv) => {
       new CleanWebpackPlugin(),
       // Html Webpack Plugin
       new HtmlWebPackPlugin({
+        favicon: "./public/favicon.ico",
         template: "./src/index.html",
         filename: "index.html",
         title: "Cinema King"
