@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header should render correctly 1`] = `
+<header>
+  <div
+    id="menu"
+  >
+    <div
+      id="logo"
+    >
+      <span
+        className="bold"
+      >
+        Cinema
+      </span>
+      King
+    </div>
+    <Menu />
+  </div>
+  <div
+    id="siteHero"
+  >
+    <h1>
+      Sci-fi Movies of the decade
+    </h1>
+  </div>
+</header>
+`;
