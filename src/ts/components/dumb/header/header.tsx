@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 
+import { Menu } from '../../index';
 import './header.scss';
 
 export class Header extends React.Component<any, any> {
@@ -16,8 +17,9 @@ export class Header extends React.Component<any, any> {
           <div id="logo">
             <span className="bold">Cinema</span>King
           </div>
+          <Menu />
         </div>
-        <div id="site-hero">
+        <div id="siteHero">
           <h1>Sci-fi Movies of the decade</h1>
         </div>
       </header>

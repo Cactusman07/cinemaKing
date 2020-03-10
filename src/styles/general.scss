@@ -9,3 +9,17 @@ body {
   background-color: $tertiaryColor;
   font-family: 'Caladea', sans-serif;
 }
+
+.show-mobile {
+  display: block;
+  @include desktop {
+    display: none;
+  }
+}
+
+.show-desktop {
+  display: none;
+  @include desktop {
+    display: block;
+  }
+}

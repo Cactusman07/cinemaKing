@@ -9,67 +9,70 @@ header {
 
   #menu {
     @include zeroTopLeftRight;
-    height: 60px;
+    height: $mobileMenuHeight;
     background: $white;
     box-shadow: 0px 4px 30px rgba($black, 0.05), 0px 0px 1px rgba($black, 0.15);
     display: flex;
+    position: relative;
     @include tablet-up {
-      height: 80px;
-    }
-
-    #logo {
-      position: absolute;
-      height: 60px;
-      width: 180px;
-      font-size: 18px;
-      line-height: 24px;
-      left: 0px;
-      top: 0px;
-      background: $primaryColor;
-      color: $white;
-      font-family: 'Poppins', sans-serif;
-      text-transform: uppercase;
-      font-style: italic;
-      text-align: center;
-      letter-spacing: 0.6px;
-      justify-content: center;
-      align-items: center;
-      display: flex;
-      @include tablet-up {
-        height: 80px;
-        width: 243px;
-        font-size: 25px;
-        line-height: 37px;
-      }
-
-      &:before {
-        content: '';
-        position: absolute;
-        top: 0;
-        bottom: 0px;
-        right: 0px;
-        width: 20px;
-        height: 100%;
-        background-color: $primaryColor;
-        border-right: 5px solid $secondaryColor;
-        transform-origin: 100% 100%;
-        transform: skewX(-12deg);
-      }
-
-      span {
-        font-weight: 900;
-      }
+      height: $tabletMenuHeight;
     }
   }
 
-  #site-hero {
-    width: 100%;
+  #logo {
+    position: absolute;
+    height: $mobileMenuHeight;
+    width: 180px;
+    font-size: 18px;
+    line-height: 24px;
+    left: 0px;
+    top: 0px;
+    background: $primaryColor;
+    color: $white;
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+    font-style: italic;
+    text-align: center;
+    letter-spacing: 0.6px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+
+    @include tablet-up {
+      height: $tabletMenuHeight;
+      width: 243px;
+      font-size: 25px;
+      line-height: 37px;
+    }
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0px;
+      right: 0px;
+      width: 20px;
+      height: 100%;
+      background-color: $primaryColor;
+      border-right: 5px solid $secondaryColor;
+      transform-origin: 100% 100%;
+      transform: skewX(-12deg);
+    }
+
+    span {
+      font-weight: 900;
+    }
+  }
+
+  #siteHero {
     @include zeroTopLeftRight;
+    width: 100%;
     height: 250px;
     background: linear-gradient(180deg, rgba($black, 0) 0%, rgba($black, 0.5) 100%),
       url('../../../../img/cinema-king-header-optimized.jpg') no-repeat center;
     background-size: cover;
     display: flex;
+
     @include tablet-up {
       height: 420px;
     }
@@ -85,6 +88,7 @@ header {
       align-items: center;
       flex: auto;
       position: relative;
+
       @include tablet {
         font-size: 42px;
         line-height: 64px;
@@ -98,22 +102,27 @@ header {
         content: 'FEATURE';
         color: $fontTitleColor;
         background: $secondaryColor;
-        height: 28.3px;
-        width: 104px;
+        height: 24.5px;
+        width: 90px;
+        font-size: 12px;
+        line-height: 24px;
+        bottom: 20%;
         text-align: center;
         font-family: 'Poppins', sans-serif;
         font-style: italic;
         font-weight: 900;
-        font-size: 14px;
-        line-height: 28px;
         border-right: 5px solid $secondaryColor;
         border-left: 5px solid $secondaryColor;
         transform-origin: 100% 100%;
         transform: skewX(-12deg);
         position: absolute;
-        bottom: 20%;
+
         @include tablet-up {
           bottom: 30%;
+          height: 28.3px;
+          width: 104px;
+          font-size: 14px;
+          line-height: 28px;
         }
       }
     }

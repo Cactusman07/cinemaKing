@@ -1,0 +1,100 @@
+/* menu.scss */
+@import '~/styles/variables.scss';
+@import '~/styles/mixins.scss';
+@import '~/styles/fonts.scss';
+
+#menuItems {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: calc(100% - 243px);
+  height: $mobileMenuHeight;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  @include tablet-up {
+    width: calc(100% - 180px);
+    flex-direction: row;
+    height: $tabletMenuHeight;
+  }
+
+  a {
+    color: $fontTitleSecondaryColor;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: 0.6px;
+    margin-left: 63px;
+    padding-left: 4px;
+    transition: all 0.2s;
+
+    .selected {
+      color: $fontTitleColor;
+    }
+
+    &:hover {
+      color: $fontTitleColor;
+      border-bottom: solid 2px $primaryColor;
+    }
+  }
+}
+
+#mobileMenu,
+#menuDrawer button {
+  background: none;
+  font-size: 16px;
+  height: 50px;
+  border: none;
+  font-weight: 600;
+  position: absolute;
+  cursor: pointer;
+  z-index: 100;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 0.6px;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+#mobileMenu {
+  right: 10px;
+  top: 10px;
+}
+
+#menuDrawer {
+  position: fixed;
+  height: 100%;
+  width: 60%;
+  background-color: $white;
+  border-right: solid $secondaryColor 4px;
+  box-shadow: $fontPrimaryColor 2px 0px 8px;
+  z-index: 100;
+
+  button {
+    left: 20px;
+    text-transform: uppercase;
+    font-style: normal;
+  }
+
+  #menuItems {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: initial;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    margin-top: 60px;
+
+    a {
+      margin-top: 20px;
+    }
+  }
+}
