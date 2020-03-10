@@ -1,0 +1,73 @@
+/* movieTiles.scss */
+
+@import '~/styles/variables.scss';
+@import '~/styles/mixins.scss';
+@import '~/styles/fonts.scss';
+
+.movie-tile {
+  width: 80%;
+  padding-bottom: 35%;
+  margin: 0 auto 6% auto;
+  position: relative;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  @include tablet-up {
+    max-height: 242px;
+    width: 33%;
+    padding-bottom: 20%;
+    margin: 0 0 2%;
+  }
+
+  .rank {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 900;
+    font-size: 23px;
+    font-style: italic;
+    line-height: 40px;
+    color: $fontTitleColor;
+    background-color: $secondaryColor;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 60px;
+    z-index: 50;
+
+    &:before {
+      content: '';
+      position: absolute;
+      bottom: 0px;
+      right: 0px;
+      width: 10px;
+      height: 100%;
+      background-color: $secondaryColor;
+      border-right: 5px solid $secondaryColor;
+      transform-origin: 100% 100%;
+      transform: skewX(-10deg);
+    }
+  }
+
+  .title-date {
+    color: $white;
+    background: $primaryColor;
+    font-size: 18px;
+    line-height: 40px;
+    padding: 0 27px 0 32px;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 900;
+    border-right: 5px solid $primaryColor;
+    border-left: 5px solid $primaryColor;
+    transform-origin: 100% 100%;
+    transform: skewX(-10deg);
+    position: absolute;
+    z-index: 40;
+    bottom: -15px;
+    left: 30px;
+
+    span {
+      font-weight: 400;
+    }
+  }
+}

@@ -34,7 +34,7 @@ export class Menu extends React.Component<any, any> {
     return (
       <React.Fragment>
         <div className="show-mobile">
-          <Button id="mobileMenu" onClick={this.openDrawerRight}>
+          <Button flat id="mobileMenu" onClick={this.openDrawerRight}>
             MENU
           </Button>
           <Drawer

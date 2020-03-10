@@ -1,0 +1,81 @@
+/* Spinner.scss */
+
+@import '~/styles/variables.scss';
+
+$colors-logo: (
+  1: $primaryColor,
+  2: $secondaryColor,
+  3: $fontTitleSecondaryColor,
+  4: $black,
+  5: $white,
+  6: $primaryColor,
+  7: $secondaryColor,
+  8: $fontPrimaryColor,
+  9: $fontSecondaryColor
+);
+
+#spinner {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+// ==========================================================================
+// Loader Base
+// ==========================================================================
+
+$loader-size: 100px;
+$animation-duration: 2s;
+$animation-delay: 0.1s;
+
+.loader {
+  width: $loader-size;
+  height: $loader-size;
+  perspective: $loader-size;
+  text-align: center;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -($loader-size/2);
+  margin-left: -($loader-size/2);
+}
+
+.loader__tile {
+  display: block;
+  float: left;
+  width: 33.33%;
+  height: 33.33%;
+
+  animation-name: flip;
+  transform-style: preserve-3d;
+  animation-iteration-count: infinite;
+  animation-duration: $animation-duration;
+  animation-timing-function: ease-in-out;
+  transform: rotateY(0deg);
+  z-index: 0;
+}
+
+// ==========================================================================
+// Loader Parts
+// ==========================================================================
+
+@each $key, $color in $colors-logo {
+  .loader__tile__#{$key} {
+    background-color: $color;
+    animation-delay: ($animation-delay * $key);
+  }
+}
+
+// ==========================================================================
+// Loader Animation
+// ==========================================================================
+
+@keyframes flip {
+  0% {
+    transform: rotateY(0deg);
+  }
+  11% {
+    transform: rotateY(180deg);
+  }
+}
