@@ -45,11 +45,11 @@ module.exports = (env, argv) => {
     optimization: {
       minimize: isProd,
       minimizer: isProd ? [
-        new UglifyJsPlugin({
+        /* new UglifyJsPlugin({
           cache: true,
           parallel: true,
           sourceMap: true 
-        }),
+        }), */
         new OptimizeCSSAssetsPlugin({})
       ] : []
     },
@@ -89,10 +89,7 @@ module.exports = (env, argv) => {
         {
           test: /\.(png|svg|jpg|gif|eot|ttf|woff|woff2)$/,
           use: {
-            loader: "file-loader",
-            options: {
-              name: "[path][name].[ext]",
-            },
+            loader: "file-loader"
           }
         }
       ]
