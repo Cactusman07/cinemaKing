@@ -1,9 +1,15 @@
 /* movieTiles.tsx */
 
 import * as React from 'react';
-import BackgroundImageOnLoad from 'background-image-on-load';
 
 import './movieTiles.scss';
+import { connect } from 'react-redux';
+
+const mapStateToProps = (state: any) => {
+  return {
+    bgIsLoaded: false
+  };
+};
 
 interface MovieProps {
   name: string;
@@ -12,7 +18,7 @@ interface MovieProps {
   rank: number;
 }
 
-export class MovieTile extends React.Component<MovieProps, any> {
+export class MovieTileComponent extends React.Component<MovieProps, any> {
   public constructor(props: any) {
     super(props);
     this.state = {
@@ -20,21 +26,28 @@ export class MovieTile extends React.Component<MovieProps, any> {
     }
   }
 
+  imageIsLoaded = () => {
+    this.setState({
+      bgIsLoaded: true
+    })
+  }
+
   public render() {
     const { bgIsLoaded } = this.state;
+    if(!bgIsLoaded){
+      const img = new Image();
+      img.src = this.props.imgURL;
+      img.onload = () => this.imageIsLoaded();
+    }    
+
     return (
-      <div className="movie-tile" style={{backgroundImage: `url(${!bgIsLoaded ? '' : this.props.imgURL})`}}>
-        <BackgroundImageOnLoad
-          src={'https://media.giphy.com/media/VseXvvxwowwCc/giphy.gif'}
-          onLoadBg={() =>
-          this.setState({
-            bgIsLoaded: true
-          })}
-          onError={err => console.log(err)}
-        />
+      <div className="movie-tile" style={{backgroundImage: `url(${!bgIsLoaded ? 
+        'https://media.giphy.com/media/VseXvvxwowwCc/giphy.gif' : this.props.imgURL})`}}>
         <div className="rank">{this.props.rank}.</div>
         <div className="title-date">{this.props.name} <span>({this.props.releaseDate.substring(0,4)})</span></div>
       </div>
     );
   }
 }
+
+export const MovieTile = connect(mapStateToProps)(MovieTileComponent);

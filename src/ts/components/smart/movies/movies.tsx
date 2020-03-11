@@ -2,10 +2,9 @@
 
 import * as React from 'react';
 import { store } from '@store/store';
-import Axios from 'axios';
 
 import * as selectors from '@selectors/selectors';
-import * as constants from '@store/constants';
+import API from 'ts/utils/utils';
 
 import { Spinner, MovieTile } from '../../index';
 import { connect } from 'react-redux';
@@ -15,59 +14,52 @@ import './movies.scss';
 
 const mapStateToProps = (state: any) => {
   return {
-    movies: state.movies
-  };
-};
+    movies: selectors.getMovies(state)
+  }
+}
 
 export class MoviesComponent extends React.Component<any, any> {
   public constructor(props){
     super(props);
     this.state = {
       isLoading: true,
-      movies: selectors.getMovies(store.getState())
+      showError: false,
+      movies: null
     }
   }
 
-  componentDidMount(){
-    if(!!this.state.movies && this.state.movies.length > 0){
-      this.setState({ isLoading: false });
-    } else {
-      // Use Axios to GET movies
-      try{
-        Axios.get(constants.API)
-          // tslint:disable-next-line: only-arrow-functions
-          .then(function(response){
-            if(!!response.data.data.movies){
-              store.dispatch({ type: LOAD_MOVIES, payload: response.data.data.movies });
-            }
-          })
-          // tslint:disable-next-line: only-arrow-functions
-          .catch(function (error) {
-            // handle error
-            console.log(error);
-          })
-          // tslint:disable-next-line: only-arrow-functions
-          .then(function () {
-            // always executed
-          });
-          this.setState({ isLoading: false });
-      } catch(e) {
-        console.log(e);
+  async componentDidMount(){
+    if(!this.props.movies){
+      try {
+        let movieData = await API.get('', {
+          params: {
+            results: 9
+          }
+        });
+        movieData = movieData.data.data.movies;
+        store.dispatch({ type: LOAD_MOVIES, payload: movieData });
+  
+        this.setState({ isLoading: false });
+        this.setState({ movies: movieData });
+      } catch(e){
+        console.log(`Axios request failed: ${e}`);
+        this.setState({ showError: true });
+        this.setState({ isLoading: false });
       }
+    } else {
+      this.setState({ isLoading: false });
     }
   }
 
   public render(){
-
-
     return (
       <div id="movieList">
         {this.state.isLoading ? (
           <Spinner />
         ) : null}
 
-        {!this.state.isLoading && this.state.movies.length > 0 && (
-          this.state.movies.map(movie => 
+        {!this.state.isLoading && !!this.props.movies && (
+          this.props.movies.map(movie => 
             <MovieTile 
               key={movie.name} 
               name={movie.name} 
@@ -78,7 +70,7 @@ export class MoviesComponent extends React.Component<any, any> {
           )
         )}
 
-        {!this.state.isLoading && this.state.movies.length === 0 && (
+        {this.state.showError && (
           <div>No movies... Looks like something went wrong. Please try reloading the page, or come back later. :(</div>
         )}
       </div>

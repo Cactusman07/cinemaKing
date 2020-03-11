@@ -1,7 +1,7 @@
 /* App.tsx */
 
 import * as React from 'react';
-import { Header, Movies } from './index';
+import { Header, Movies, Intro } from './index';
 
 class App extends React.Component<any, any> {
   public constructor(props: any) {
@@ -11,11 +11,8 @@ class App extends React.Component<any, any> {
   public render() {
     return (
       <React.Fragment>
-           <Header />
-        
-        {/*<div>
-          
-        </div> */}
+        <Header />
+        <Intro />
         <Movies />
         {/*<Footer /> */}
       </React.Fragment>
