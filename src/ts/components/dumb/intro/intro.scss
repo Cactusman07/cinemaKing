@@ -1,11 +1,134 @@
 /* intro.scss */
 
 @import '~/styles/variables.scss';
+@import '~/styles/fonts.scss';
+@import '~/styles/mixins.scss';
 
 #intro {
   margin: 0 auto;
-  position: absolute;
-  top: -65px;
+  position: relative;
   max-width: 1200px;
+  min-height: 458px;
   box-shadow: 0px -4px 30px rgba($black, 0.05), 0px 0px 1px rgba($black, 0.15);
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+
+  @include tablet-up {
+    width: 90%;
+    top: -65px;
+  }
+}
+
+#introHead {
+  @include desktop {
+    left: 30px;
+    right: 10px;
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -30px;
+      height: 100%;
+      border-left: 40px solid $white;
+      transform-origin: 100% 100%;
+      transform: skewX(-12deg);
+    }
+  }
+}
+
+#introHead,
+#introFoot {
+  height: 80px;
+  max-height: 80px;
+  position: relative;
+  @include desktop {
+    max-width: calc(100% - 30px);
+  }
+}
+
+#introFoot {
+  @include desktop {
+    right: 30px;
+    left: 0;
+
+    &:before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: -13px;
+      height: 100%;
+      border-right: 40px solid $white;
+      transform-origin: 100% 100%;
+      transform: skewX(-12deg);
+    }
+  }
+}
+
+#introContent {
+  flex-direction: column;
+
+  @include tablet-up {
+    flex-direction: row;
+  }
+
+  #authorInfo {
+    padding: 0 50px 20px 50px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.6px;
+    color: $fontTitleColor;
+    border-right: $primaryColor solid 0px;
+
+    @include tablet-up {
+      border-right: $primaryColor solid 3px;
+      border-bottom: $primaryColor solid 0px;
+      padding: 0 50px 0 80px;
+    }
+  }
+  #author {
+    font-weight: 600;
+  }
+  #introDate {
+    margin-top: 15px;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    color: #b4b4b4;
+    font-size: 11px;
+    line-height: 20px;
+    font-style: italic;
+  }
+  #introText {
+    padding: 0 50px 20px 50px;
+
+    @include tablet-up {
+      padding: 0 80px 0 50px;
+    }
+
+    h4 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 23px;
+      line-height: 40px;
+      color: $fontTitleColor;
+      margin-top: 0px;
+      margin-bottom: 38px;
+    }
+    p {
+      font-family: 'Caladea', sans-serif;
+      font-size: 17px;
+      line-height: 34px;
+      color: $fontPrimaryColor;
+    }
+  }
+}
+
+#introHead,
+#introFoot,
+#introContent {
+  background: $white;
+  width: 100%;
+  display: flex;
+  flex: auto;
 }

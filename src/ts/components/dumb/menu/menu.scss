@@ -63,7 +63,10 @@
 
 #mobileMenu {
   right: 10px;
-  top: 10px;
+  top: 5px;
+  @include tablet-up {
+    top: 10px;
+  }
 }
 
 #menuDrawer {
