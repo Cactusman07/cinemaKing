@@ -4,7 +4,7 @@
   "description": "A front end mock up for cinema king",
   "main": "index.js",
   "dependencies": {
-    "axios": "^0.28.0",
+    "axios": "^0.30.3",
     "background-image-on-load": "^1.1.0",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
@@ -76,7 +76,7 @@
     "typescript": "^3.8.3",
     "uglify-js": "^3.8.0",
     "uglifyjs-webpack-plugin": "^2.2.0",
-    "webpack": "^5.94.0",
+    "webpack": "^5.104.1",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.0.4",
     "xml-loader": "^1.2.1"
